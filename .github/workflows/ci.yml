@@ -298,7 +298,7 @@ jobs:
         uses: mini-bomba/create-github-release@v1.2.0
         with:
           token: ${{ secrets.gh_token }}
-          tag: "latest"
+          tag: "Latest"
           prerelease: false
           name: "Latest Firmware"
           body: |
