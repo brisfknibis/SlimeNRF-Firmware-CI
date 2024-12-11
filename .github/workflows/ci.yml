@@ -8,11 +8,21 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 9 * * *"
+    - cron: "0 21 * * *"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: 💻 Aquire code
+        if: always()
+        uses: actions/checkout@v2
+      - name: Put commit hash/name in env variables
+        run: |
+          echo "GIT_HASH=$(git rev-parse --short=8 HEAD)" >> $GITHUB_ENV
+          echo "GIT_MESSAGE<<EOF" >> $GITHUB_ENV
+          git log -1 --pretty=%B >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
       - name: 💾 Cache Zephyr Workspace
         uses: actions/cache@v3
         with:
@@ -104,15 +114,6 @@ jobs:
           key: ccache-v1-${{ runner.os }}-${{ hashFiles('zephyr-workspace/nrfconnect-ci-app/west.yml') }}
           restore-keys: |
             ccache-v1-${{ runner.os }}-
-      - name: 💻 Aquire code
-        if: always()
-        uses: actions/checkout@v2
-      - name: Put commit hash/name in env variables
-        run: |
-          echo "GIT_HASH=$(git rev-parse --short=8 HEAD)" >> $GITHUB_ENV
-          echo "GIT_MESSAGE<<EOF" >> $GITHUB_ENV
-          git log -1 --pretty=%B >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini
       # Tracker Firmware Build for SuperMini
         run: |
