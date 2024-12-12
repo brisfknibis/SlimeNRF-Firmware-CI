@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - name: 💻 Aquire code
+      # - name: 💻 Acquire code
       #   if: always()
       #   uses: actions/checkout@v2
       # - name: Put commit hash/name in env variables
@@ -303,8 +303,6 @@ jobs:
       #     name: "Latest Firmware"
       #     body: |
       #       Successful build of the latest SlimeNRF Firmware.
-      #       Commit message:
-      #       Update Release
       #     files: |
       #       zephyr-workspace/SlimeVR-Tracker-nRF/build/zephyr/SlimeNRF_Tracker_SuperMini.uf2
       #       zephyr-workspace/SlimeVR-Tracker-nRF/build_1/zephyr/SlimeNRF_Tracker_XIAO.uf2
