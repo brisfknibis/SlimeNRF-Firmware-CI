@@ -10,9 +10,10 @@ on:
     - cron: "0 9 * * *"
     - cron: "0 21 * * *"
 
+permissions: write-all
+
 jobs:
   build:
-    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: 💻 Acquire code
