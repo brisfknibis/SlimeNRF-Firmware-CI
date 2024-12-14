@@ -21,29 +21,30 @@ jobs:
       - name: 💻 Acquire code
         if: always()
         uses: actions/checkout@v2
-      - name: Put commit hash/name in env variables
+
+      - name: 📝 Put commit hash/name in env variables
         run: |
           echo "GIT_HASH=$(git rev-parse --short=8 HEAD)" >> $GITHUB_ENV
           echo "GIT_MESSAGE<<EOF" >> $GITHUB_ENV
           git log -1 --pretty=%B >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
+
       - name: 💾 Cache Zephyr Workspace
         uses: actions/cache@v3
         with:
           path: zephyr-workspace
-          key: zephyr-workspace-v1-${{ runner.os }}-${{ hashFiles('zephyr-workspace/nrfconnect-ci-app/west.yml') }}
+          key: zephyr-workspace-v1-${{ runner.os }}-${{ hashFiles('zephyr-workspace/SlimeNRF-Firmware-CI/west.yml') }}
           restore-keys: |
             zephyr-workspace-v1-${{ runner.os }}-
 
       - name: 🧹 Clean Landing Site
         run: |
-          rm -rf zephyr-workspace/nrfconnect-ci-app
-
+          rm -rf zephyr-workspace/SlimeNRF-Firmware-CI
       - uses: actions/checkout@v4
         with:
           # Clone the repo to a subdirectory, so we can initialize the Zephyr
           # workspace in the parent directory.
-          path: zephyr-workspace/nrfconnect-ci-app
+          path: zephyr-workspace/SlimeNRF-Firmware-CI
 
       - name: 💾 Cache ~/.venv
         uses: actions/cache@v3
@@ -103,7 +104,7 @@ jobs:
         run: |
           cd zephyr-workspace
           rm -rf .west
-          west init -l nrfconnect-ci-app
+          west init -l SlimeNRF-Firmware-CI
           west update --narrow -o=--depth=1
 
       - name: 🐍 Install Python Dependencies
@@ -115,9 +116,10 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/ccache
-          key: ccache-v1-${{ runner.os }}-${{ hashFiles('zephyr-workspace/nrfconnect-ci-app/west.yml') }}
+          key: ccache-v1-${{ runner.os }}-${{ hashFiles('zephyr-workspace/SlimeNRF-Firmware-CI/west.yml') }}
           restore-keys: |
             ccache-v1-${{ runner.os }}-
+
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini
       # Tracker Firmware Build for SuperMini
         run: |
@@ -141,6 +143,7 @@ jobs:
               
           # print detailed ccache statistics
           ccache -sv
+
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO
       # Tracker Firmware Build for XIAO
         run: |
@@ -164,6 +167,7 @@ jobs:
               
           # print detailed ccache statistics
           ccache -sv
+
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeNRF_R3
       # Tracker Firmware Build for SlimeNRF R3
         run: |
@@ -187,6 +191,7 @@ jobs:
               
           # print detailed ccache statistics
           ccache -sv
+
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - Nordic_eByte_Dongle
       # Receiver Firmware Build for Nordic_eByte Dongle
         run: |
@@ -210,6 +215,7 @@ jobs:
               
           # print detailed ccache statistics
           ccache -sv
+
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - SuperMini
       # Receiver Firmware Build for SuperMini
         run: |
@@ -233,6 +239,7 @@ jobs:
 
           # print detailed ccache statistics
           ccache -sv
+
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - XIAO
       # Receiver Firmware Build for XIAO
         run: |
@@ -256,6 +263,7 @@ jobs:
 
           # print detailed ccache statistics
           ccache -sv
+
       - name: 💾 Upload SlimeNRF_Tracker_SuperMini.uf2
         uses: actions/upload-artifact@v4
         with:
@@ -263,6 +271,7 @@ jobs:
           name: SlimeNRF_Tracker_SuperMini.uf2
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF/build/zephyr/SlimeNRF_Tracker_SuperMini.uf2
+
       - name: 💾 Upload SlimeNRF_Tracker_XIAO.uf2
         uses: actions/upload-artifact@v4
         with:
@@ -270,6 +279,7 @@ jobs:
           name: SlimeNRF_Tracker_XIAO.uf2
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF/build_1/zephyr/SlimeNRF_Tracker_XIAO.uf2
+
       - name: 💾 Upload SlimeNRF_Tracker_R3.uf2
         uses: actions/upload-artifact@v4
         with:
@@ -277,6 +287,7 @@ jobs:
           name: SlimeNRF_Tracker_R3.uf2
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF/build_2/zephyr/SlimeNRF_Tracker_R3.uf2
+
       - name: 💾 Upload SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
         uses: actions/upload-artifact@v4
         with:
@@ -284,6 +295,7 @@ jobs:
           name: SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_nrf52840dongle_nrf52840/zephyr/SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
+
       - name: 💾 Upload SlimeNRF_Receiver_SuperMini.uf2
         uses: actions/upload-artifact@v4
         with:
@@ -291,6 +303,7 @@ jobs:
           name: SlimeNRF_Receiver_SuperMini.uf2
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_supermini_uf2/zephyr/SlimeNRF_Receiver_SuperMini.uf2
+
       - name: 💾 Upload SlimeNRF_Receiver_XIAO.uf2
         uses: actions/upload-artifact@v4
         with:
@@ -298,6 +311,7 @@ jobs:
           name: SlimeNRF_Receiver_XIAO.uf2
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_xiao_uf2/zephyr/SlimeNRF_Receiver_XIAO.uf2
+
       - name: 📁 Create/Update Github Release
         uses: mini-bomba/create-github-release@v1.2.0
         with:
