@@ -196,7 +196,7 @@ jobs:
       # Tracker Firmware Build for SuperMini NoSleep
         run: |
           cd zephyr-workspace
-          echo "CONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
           sudo rm -rf zephyr/boards/arm/supermini_uf2
           cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_3
@@ -324,7 +324,7 @@ jobs:
         run: |
           cd zephyr-workspace
           find="CONFIG_USE_IMU_WAKE_UP=n"
-          replace="# CONFIG_USE_IMU_WAKE_UP=n"
+          replace="#\sCONFIG_USE_IMU_WAKE_UP=n"
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/prj.conf
           sudo rm -rf zephyr/boards/arm/supermini_uf2
           cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
