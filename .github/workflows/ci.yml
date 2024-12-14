@@ -236,7 +236,7 @@ jobs:
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=SlimeVR-Tracker-nRF
 
-          mv SlimeVR-Tracker-nRF/build_4/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_NoSleep_Tracker_XIAO.uf2
+          mv SlimeVR-Tracker-nRF/build_4/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_Tracker_NoSleep_Tracker_XIAO.uf2
               
           # print detailed ccache statistics
           ccache -sv
@@ -260,7 +260,7 @@ jobs:
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=SlimeVR-Tracker-nRF
 
-          mv SlimeVR-Tracker-nRF/build_5/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_NoSleep_Tracker_R3.uf2
+          mv SlimeVR-Tracker-nRF/build_5/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_Tracker_NoSleep_Tracker_R3.uf2
               
           # print detailed ccache statistics
           ccache -sv
@@ -314,7 +314,7 @@ jobs:
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=SlimeVR-Tracker-nRF
 
-          mv SlimeVR-Tracker-nRF/build_7/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_NoSleepCLK_Tracker_XIAO.uf2
+          mv SlimeVR-Tracker-nRF/build_7/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_Tracker_NoSleepCLK_Tracker_XIAO.uf2
               
           # print detailed ccache statistics
           ccache -sv
@@ -365,7 +365,7 @@ jobs:
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=SlimeVR-Tracker-nRF
 
-          mv SlimeVR-Tracker-nRF/build_9/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_CLK_Tracker_XIAO.uf2
+          mv SlimeVR-Tracker-nRF/build_9/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_Tracker_CLK_Tracker_XIAO.uf2
               
           # print detailed ccache statistics
           ccache -sv
@@ -480,7 +480,7 @@ jobs:
           # Artifact name
           name: SlimeNRF_Tracker_NoSleep_XIAO.uf2
           # A file, directory or wildcard pattern that describes what to upload
-          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_NoSleep_Tracker_XIAO.uf2
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_Tracker_NoSleep_Tracker_XIAO.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleep_R3.uf2
         uses: actions/upload-artifact@v4
@@ -488,7 +488,7 @@ jobs:
           # Artifact name
           name: SlimeNRF_Tracker_NoSleep_R3.uf2
           # A file, directory or wildcard pattern that describes what to upload
-          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_NoSleep_Tracker_R3.uf2
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_Tracker_NoSleep_Tracker_R3.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
         uses: actions/upload-artifact@v4
@@ -504,7 +504,7 @@ jobs:
           # Artifact name
           name: SlimeNRF_Tracker_NoSleepCLK_XIAO.uf2
           # A file, directory or wildcard pattern that describes what to upload
-          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_NoSleepCLK_Tracker_XIAO.uf2
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_Tracker_NoSleepCLK_Tracker_XIAO.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_CLK_SuperMini.uf2
         uses: actions/upload-artifact@v4
@@ -520,7 +520,7 @@ jobs:
           # Artifact name
           name: SlimeNRF_Tracker_CLK_XIAO.uf2
           # A file, directory or wildcard pattern that describes what to upload
-          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_CLK_Tracker_XIAO.uf2
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_Tracker_CLK_Tracker_XIAO.uf2
 
       - name: 💾 Upload SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
         uses: actions/upload-artifact@v4
@@ -563,10 +563,10 @@ jobs:
             zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_supermini_uf2/zephyr/SlimeNRF_Receiver_SuperMini.uf2
             zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_xiao_uf2/zephyr/SlimeNRF_Receiver_XIAO.uf2
             zephyr-workspace/SlimeVR-Tracker-nRF/build_3/zephyr/SlimeNRF_Tracker_NoSleep_SuperMini.uf2
-            zephyr-workspace/SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_NoSleep_Tracker_XIAO.uf2
-            zephyr-workspace/SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_NoSleep_Tracker_R3.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_Tracker_NoSleep_Tracker_XIAO.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_Tracker_NoSleep_Tracker_R3.uf2
             zephyr-workspace/SlimeVR-Tracker-nRF/build_6/zephyr/SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
-            zephyr-workspace/SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_NoSleepCLK_Tracker_XIAO.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_Tracker_NoSleepCLK_Tracker_XIAO.uf2
             zephyr-workspace/SlimeVR-Tracker-nRF/build_8/zephyr/SlimeNRF_Tracker_CLK_SuperMini.uf2
-            zephyr-workspace/SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_CLK_Tracker_XIAO.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_Tracker_CLK_Tracker_XIAO.uf2
           clear_attachments: false
