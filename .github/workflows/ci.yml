@@ -192,6 +192,174 @@ jobs:
           # print detailed ccache statistics
           ccache -sv
 
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini NoSleep
+      # Tracker Firmware Build for SuperMini NoSleep
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/supermini_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_3
+          mkdir SlimeVR-Tracker-nRF/build_3
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board supermini_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_3 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_3/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_3/zephyr/SlimeNRF_Tracker_NoSleep_SuperMini.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
+      - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO NoSleep
+      # Tracker Firmware Build for XIAO NoSleep
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/xiao_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_4
+          mkdir SlimeVR-Tracker-nRF/build_4
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board xiao_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_4 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_4/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_NoSleep_Tracker_XIAO.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeNRF_R3 NoSleep
+      # Tracker Firmware Build for SlimeNRF R3 NoSleep
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/slimenrf_r3_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/slimenrf_r3_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_5
+          mkdir SlimeVR-Tracker-nRF/build_5
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board slimenrf_r3_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_5 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_5/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_NoSleep_Tracker_R3.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini NoSleepCLK
+      # Tracker Firmware Build for SuperMini NoSleepCLK
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/supermini_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_6
+          mkdir SlimeVR-Tracker-nRF/build_6
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board supermini_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_6 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_6/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_6/zephyr/SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
+      - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO NoSleepCLK
+      # Tracker Firmware Build for XIAO NoSleepCLK
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/xiao_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_7
+          mkdir SlimeVR-Tracker-nRF/build_7
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board xiao_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_7 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_7/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_NoSleepCLK_Tracker_XIAO.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini CLK
+      # Tracker Firmware Build for SuperMini CLK
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/supermini_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_8
+          mkdir SlimeVR-Tracker-nRF/build_8
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board supermini_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_8 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_8/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_8/zephyr/SlimeNRF_Tracker_CLK_SuperMini.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
+      - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO CLK
+      # Tracker Firmware Build for XIAO CLK
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/xiao_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_9
+          mkdir SlimeVR-Tracker-nRF/build_9
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board xiao_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_9 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_9/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_CLK_Tracker_XIAO.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - Nordic_eByte_Dongle
       # Receiver Firmware Build for Nordic_eByte Dongle
         run: |
@@ -288,6 +456,62 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF/build_2/zephyr/SlimeNRF_Tracker_R3.uf2
 
+      - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SuperMini.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_NoSleep_SuperMini.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_3/zephyr/SlimeNRF_Tracker_NoSleep_SuperMini.uf2
+
+      - name: 💾 Upload SlimeNRF_Tracker_NoSleep_XIAO.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_NoSleep_XIAO.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_NoSleep_Tracker_XIAO.uf2
+
+      - name: 💾 Upload SlimeNRF_Tracker_NoSleep_R3.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_NoSleep_R3.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_NoSleep_Tracker_R3.uf2
+
+      - name: 💾 Upload SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_6/zephyr/SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
+
+      - name: 💾 Upload SlimeNRF_Tracker_NoSleepCLK_XIAO.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_NoSleepCLK_XIAO.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_NoSleepCLK_Tracker_XIAO.uf2
+
+      - name: 💾 Upload SlimeNRF_Tracker_CLK_SuperMini.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_CLK_SuperMini.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_8/zephyr/SlimeNRF_Tracker_CLK_SuperMini.uf2
+
+      - name: 💾 Upload SlimeNRF_Tracker_CLK_XIAO.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_CLK_XIAO.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_CLK_Tracker_XIAO.uf2
+
       - name: 💾 Upload SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
         uses: actions/upload-artifact@v4
         with:
@@ -328,4 +552,11 @@ jobs:
             zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_nrf52840dongle_nrf52840/zephyr/SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
             zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_supermini_uf2/zephyr/SlimeNRF_Receiver_SuperMini.uf2
             zephyr-workspace/SlimeVR-Tracker-nRF-Receiver/build_xiao_uf2/zephyr/SlimeNRF_Receiver_XIAO.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_3/zephyr/SlimeNRF_Tracker_NoSleep_SuperMini.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_4/zephyr/SlimeNRF_NoSleep_Tracker_XIAO.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_NoSleep_Tracker_R3.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_6/zephyr/SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_NoSleepCLK_Tracker_XIAO.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_8/zephyr/SlimeNRF_Tracker_CLK_SuperMini.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_CLK_Tracker_XIAO.uf2
           clear_attachments: false
