@@ -196,6 +196,7 @@ jobs:
       # Tracker Firmware Build for SuperMini NoSleep
         run: |
           cd zephyr-workspace
+          echo "CONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
           sudo rm -rf zephyr/boards/arm/supermini_uf2
           cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_3
@@ -268,6 +269,9 @@ jobs:
       # Tracker Firmware Build for SuperMini NoSleepCLK
         run: |
           cd zephyr-workspace
+          find="// clk-gpios"
+          replace="clk-gpios"
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/arm/supermini_uf2/supermini_uf2.dts
           sudo rm -rf zephyr/boards/arm/supermini_uf2
           cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_6
@@ -292,6 +296,9 @@ jobs:
       # Tracker Firmware Build for XIAO NoSleepCLK
         run: |
           cd zephyr-workspace
+          find="// clk-gpios"
+          replace="clk-gpios"
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/arm/xiao_uf2/xiao_uf2.dts
           sudo rm -rf zephyr/boards/arm/xiao_uf2
           cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_7
@@ -316,6 +323,9 @@ jobs:
       # Tracker Firmware Build for SuperMini CLK
         run: |
           cd zephyr-workspace
+          find="CONFIG_USE_IMU_WAKE_UP=n"
+          replace="# CONFIG_USE_IMU_WAKE_UP=n"
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/prj.conf
           sudo rm -rf zephyr/boards/arm/supermini_uf2
           cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_8
