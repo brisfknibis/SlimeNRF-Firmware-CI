@@ -9,8 +9,8 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "0 15 * * *"
     - cron: "0 3 * * *"
+    - cron: "0 15 * * *"
 
 # Allow one concurrent deployment
 concurrency:
@@ -45,7 +45,7 @@ jobs:
 
       - name: 🧹 Clean Landing Site
         run: |
-          rm -rf zephyr-workspace/SlimeNRF-Firmware-CI
+          sudo rm -rf zephyr-workspace/SlimeNRF-Firmware-CI
       - uses: actions/checkout@v4
         with:
           # Clone the repo to a subdirectory, so we can initialize the Zephyr
@@ -109,7 +109,7 @@ jobs:
         # Set up the Zephyr workspace and install the Python dependencies
         run: |
           cd zephyr-workspace
-          rm -rf .west
+          sudo rm -rf .west
           west init -l SlimeNRF-Firmware-CI
           west update --narrow -o=--depth=1
 
