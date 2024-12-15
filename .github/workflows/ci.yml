@@ -143,7 +143,7 @@ jobs:
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
-              -DBOARD_ROOT=SlimeVR-Tracker-nRF/boards/arm
+              -DBOARD_ROOT="$(pwd)"
 
           mv SlimeVR-Tracker-nRF/build/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build/zephyr/SlimeNRF_Tracker_SuperMini.uf2
               
