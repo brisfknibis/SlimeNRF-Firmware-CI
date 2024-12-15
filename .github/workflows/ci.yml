@@ -12,9 +12,14 @@ on:
     - cron: "0 15 * * *"
     - cron: "0 3 * * *"
 
+# Allow one concurrent deployment
+concurrency:
+  cancel-in-progress: true
+
 permissions: write-all
 
 jobs:
+  if: ${{ github.repository == 'Shine-Bright-Meow/SlimeNRF-Firmware-CI ' }}
   build:
     runs-on: ubuntu-latest
     steps:
@@ -220,7 +225,7 @@ jobs:
       # Tracker Firmware Build for SuperMini NoSleep
         run: |
           cd zephyr-workspace
-          printf "\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
           sudo rm -rf zephyr/boards/arm/supermini_uf2
           cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_3
