@@ -19,8 +19,8 @@ concurrency:
 permissions: write-all
 
 jobs:
-  if: ${{ github.repository == 'Shine-Bright-Meow/SlimeNRF-Firmware-CI ' }}
   build:
+    if: ${{ github.repository == 'Shine-Bright-Meow/SlimeNRF-Firmware-CI' }}
     runs-on: ubuntu-latest
     steps:
       - name: 💻 Acquire code
