@@ -192,6 +192,30 @@ jobs:
           # print detailed ccache statistics
           ccache -sv
 
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini
+      # Tracker Firmware Build for SlimeVR Mini
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/slimevrmini_p1_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/slimevrmini_p1_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_10
+          mkdir SlimeVR-Tracker-nRF/build_10
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board slimevrmini_p1_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_10 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_10/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_10/zephyr/SlimeNRF_Tracker_SlimevrMini.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini NoSleep
       # Tracker Firmware Build for SuperMini NoSleep
         run: |
@@ -261,6 +285,30 @@ jobs:
               -DBOARD_ROOT=SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build_5/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_5/zephyr/SlimeNRF_Tracker_NoSleep_R3.uf2
+              
+          # print detailed ccache statistics
+          ccache -sv
+
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini NoSleep
+      # Tracker Firmware Build for SlimeVR Mini NoSleep
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf zephyr/boards/arm/slimevrmini_p1_uf2
+          cp -r SlimeVR-Tracker-nRF/boards/arm/slimevrmini_p1_uf2 zephyr/boards/arm/
+          sudo rm -rf SlimeVR-Tracker-nRF/build_11
+          mkdir SlimeVR-Tracker-nRF/build_11
+          
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board slimevrmini_p1_uf2 \
+              --pristine=always SlimeVR-Tracker-nRF \
+              --build-dir SlimeVR-Tracker-nRF/build_11 \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=SlimeVR-Tracker-nRF
+
+          mv SlimeVR-Tracker-nRF/build_11/zephyr/zephyr.uf2 SlimeVR-Tracker-nRF/build_11/zephyr/SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
               
           # print detailed ccache statistics
           ccache -sv
@@ -466,6 +514,22 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/SlimeVR-Tracker-nRF/build_2/zephyr/SlimeNRF_Tracker_R3.uf2
 
+      - name: 💾 Upload SlimeNRF_Tracker_SlimevrMini.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_SlimevrMini.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_10/zephyr/SlimeNRF_Tracker_SlimevrMini.uf2
+
+      - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/SlimeVR-Tracker-nRF/build_11/zephyr/SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
+
       - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SuperMini.uf2
         uses: actions/upload-artifact@v4
         with:
@@ -569,4 +633,6 @@ jobs:
             zephyr-workspace/SlimeVR-Tracker-nRF/build_7/zephyr/SlimeNRF_Tracker_NoSleepCLK_XIAO.uf2
             zephyr-workspace/SlimeVR-Tracker-nRF/build_8/zephyr/SlimeNRF_Tracker_CLK_SuperMini.uf2
             zephyr-workspace/SlimeVR-Tracker-nRF/build_9/zephyr/SlimeNRF_Tracker_CLK_XIAO.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_10/zephyr/SlimeNRF_Tracker_SlimevrMini.uf2
+            zephyr-workspace/SlimeVR-Tracker-nRF/build_11/zephyr/SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
           clear_attachments: false
