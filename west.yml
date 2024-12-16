@@ -23,7 +23,7 @@ manifest:
 
     # vqf-c
     - name: vqf-c
-      url: https://github.com/sctanf/vqf-c/
+      url: https://github.com/sctanf/vqf-c.git
       path: SlimeVR-Tracker-nRF/vqf-c
       revision: master
 
