@@ -130,8 +130,6 @@ jobs:
       # Tracker Firmware Build for SuperMini
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/supermini_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
@@ -154,8 +152,6 @@ jobs:
       # Tracker Firmware Build for XIAO
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/xiao_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_1
           mkdir SlimeVR-Tracker-nRF/build_1
           
@@ -178,8 +174,6 @@ jobs:
       # Tracker Firmware Build for SlimeNRF R3
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/slimenrf_r3_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/slimenrf_r3_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_2
           mkdir SlimeVR-Tracker-nRF/build_2
           
@@ -202,8 +196,6 @@ jobs:
       # Tracker Firmware Build for SlimeVR Mini
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/slimevrmini_p1_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/slimevrmini_p1_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_10
           mkdir SlimeVR-Tracker-nRF/build_10
           
@@ -227,8 +219,6 @@ jobs:
         run: |
           cd zephyr-workspace
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
-          # sudo rm -rf zephyr/boards/arm/supermini_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_3
           mkdir SlimeVR-Tracker-nRF/build_3
           
@@ -251,8 +241,6 @@ jobs:
       # Tracker Firmware Build for XIAO NoSleep
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/xiao_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_4
           mkdir SlimeVR-Tracker-nRF/build_4
           
@@ -275,8 +263,6 @@ jobs:
       # Tracker Firmware Build for SlimeNRF R3 NoSleep
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/slimenrf_r3_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/slimenrf_r3_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_5
           mkdir SlimeVR-Tracker-nRF/build_5
           
@@ -299,8 +285,6 @@ jobs:
       # Tracker Firmware Build for SlimeVR Mini NoSleep
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/slimevrmini_p1_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/slimevrmini_p1_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_11
           mkdir SlimeVR-Tracker-nRF/build_11
           
@@ -326,8 +310,6 @@ jobs:
           find='\/\/\sclk-gpios'
           replace='clk-gpios'
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/arm/supermini_uf2/supermini_uf2.dts
-          # sudo rm -rf zephyr/boards/arm/supermini_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_6
           mkdir SlimeVR-Tracker-nRF/build_6
           
@@ -353,8 +335,6 @@ jobs:
           find="\/\/\sclk-gpios"
           replace="clk-gpios"
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/arm/xiao_uf2/xiao_uf2.dts
-          # sudo rm -rf zephyr/boards/arm/xiao_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_7
           mkdir SlimeVR-Tracker-nRF/build_7
           
@@ -380,8 +360,6 @@ jobs:
           find="CONFIG_USE_IMU_WAKE_UP=n"
           replace="#\sCONFIG_USE_IMU_WAKE_UP=n"
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/prj.conf
-          # sudo rm -rf zephyr/boards/arm/supermini_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_8
           mkdir SlimeVR-Tracker-nRF/build_8
           
@@ -404,8 +382,6 @@ jobs:
       # Tracker Firmware Build for XIAO CLK
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/xiao_uf2
-          # cp -r SlimeVR-Tracker-nRF/boards/arm/xiao_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build_9
           mkdir SlimeVR-Tracker-nRF/build_9
           
