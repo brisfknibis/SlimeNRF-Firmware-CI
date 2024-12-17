@@ -9,8 +9,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "0 3 * * *"
-    - cron: "0 15 * * *"
+    - cron: "30 */12 * * *"
 
 # Allow one concurrent deployment
 concurrency:
