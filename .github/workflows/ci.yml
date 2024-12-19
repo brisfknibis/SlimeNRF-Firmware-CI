@@ -606,9 +606,9 @@ jobs:
             zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMini.uf2
             zephyr-workspace/Releases/SlimeNRF_Tracker_XIAO.uf2
             zephyr-workspace/Releases/SlimeNRF_Tracker_R3.uf2
-            zephyr-workspace/ReleasesSlimeNRF_Receiver_Nordic_eByte_Dongle.hex
-            zephyr-workspace/ReleasesSlimeNRF_Receiver_SuperMini.uf2
-            zephyr-workspace/ReleasesSlimeNRF_Receiver_XIAO.uf2
+            zephyr-workspace/Releases/SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
+            zephyr-workspace/Releases/SlimeNRF_Receiver_SuperMini.uf2
+            zephyr-workspace/Releases/SlimeNRF_Receiver_XIAO.uf2
             zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMini.uf2
             zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_XIAO.uf2
             zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_R3.uf2
