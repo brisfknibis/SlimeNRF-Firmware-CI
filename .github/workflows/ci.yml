@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+  create:
   workflow_dispatch:
   schedule:
     - cron: "30 */12 * * *"
@@ -100,9 +101,9 @@ jobs:
         # only for the arm-zephyr-eabi (Cortex-M) architecture, since we don't
         # need the other toolchains (xtensa, riscv, etc.)
         run: |
-          wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz
-          tar xf zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz -C ~/
-          ~/zephyr-sdk-0.17.0/setup.sh -c -t arm-zephyr-eabi
+          wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.18.0-alpha2/zephyr-sdk-0.18.0-alpha2_linux-x86_64_minimal.tar.xz
+          tar xf zephyr-sdk-0.18.0-alpha2_linux-x86_64_minimal.tar.xz -C ~/
+          ~/zephyr-sdk-0.18.0-alpha2/setup.sh -c -t arm-zephyr-eabi
 
       - name: ♻️ Initialize Zephyr Workspace
         # Set up the Zephyr workspace and install the Python dependencies
@@ -137,7 +138,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board supermini_uf2 \
+              --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -159,7 +160,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board xiao_uf2 \
+              --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -181,7 +182,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board slimenrf_r3_uf2 \
+              --board slimenrf_r3/nrf52840/uf2 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -203,7 +204,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board slimevrmini_p1_uf2 \
+              --board slimevrmini_p1_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -226,7 +227,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board supermini_uf2 \
+              --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -248,7 +249,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board xiao_uf2 \
+              --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -270,7 +271,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board slimenrf_r3_uf2 \
+              --board slimenrf_r3/nrf52840/uf2 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -292,7 +293,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board slimevrmini_p1_uf2 \
+              --board slimevrmini_p1_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -317,7 +318,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board supermini_uf2 \
+              --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -342,7 +343,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board xiao_uf2 \
+              --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -367,7 +368,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board supermini_uf2 \
+              --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -389,7 +390,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board xiao_uf2 \
+              --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
               --build-dir SlimeVR-Tracker-nRF/build \
               -- \
@@ -413,7 +414,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board nrf52840dongle_nrf52840 \
+              --board nrf52840dongle/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
               --build-dir SlimeVR-Tracker-nRF-Receiver/build \
               -- \
@@ -437,7 +438,7 @@ jobs:
           # zero ccache statistics
           ccache -z
           west build \
-              --board supermini_uf2 \
+              --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
               --build-dir SlimeVR-Tracker-nRF-Receiver/build \
               -- \
@@ -473,58 +474,58 @@ jobs:
           # print detailed ccache statistics
           ccache -sv
 
-      - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪)
-      # Tracker Firmware Build for SuperMini (Stacked 🥪)
-        run: |
-          cd zephyr-workspace
-          sudo rm -rf Stacked-SmolSlime/Kconfig
-          find="sw0\s="
-          replace="\/\/ sw0 ="
-          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/arm/supermini_uf2/supermini_uf2.dts
-          cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
-          cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
-          cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
-          cp SlimeVR-Tracker-nRF/Kconfig Stacked-SmolSlime/
-          sudo rm -rf Stacked-SmolSlime/build
-          mkdir Stacked-SmolSlime/build
+      # - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪)
+      # # Tracker Firmware Build for SuperMini (Stacked 🥪)
+      #   run: |
+      #     cd zephyr-workspace
+      #     sudo rm -rf Stacked-SmolSlime/Kconfig
+      #     find="sw0\s="
+      #     replace="\/\/ sw0 ="
+      #     sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/arm/supermini_uf2/supermini_uf2.dts
+      #     cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
+      #     cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
+      #     cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
+      #     cp SlimeVR-Tracker-nRF/Kconfig Stacked-SmolSlime/
+      #     sudo rm -rf Stacked-SmolSlime/build
+      #     mkdir Stacked-SmolSlime/build
           
-          # zero ccache statistics
-          ccache -z
-          west build \
-              --board supermini_uf2 \
-              --pristine=always Stacked-SmolSlime \
-              --build-dir Stacked-SmolSlime/build \
-              -- \
-              -DNCS_TOOLCHAIN_VERSION=NONE \
-              -DBOARD_ROOT=../Stacked-SmolSlime
+      #     # zero ccache statistics
+      #     ccache -z
+      #     west build \
+      #         --board supermini_uf2/nrf52840 \
+      #         --pristine=always Stacked-SmolSlime \
+      #         --build-dir Stacked-SmolSlime/build \
+      #         -- \
+      #         -DNCS_TOOLCHAIN_VERSION=NONE \
+      #         -DBOARD_ROOT=../Stacked-SmolSlime
 
-          mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
+      #     mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
               
-          # print detailed ccache statistics
-          ccache -sv
+      #     # print detailed ccache statistics
+      #     ccache -sv
 
-      - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) NoSleep
-      # Tracker Firmware Build for SuperMini (Stacked 🥪) NoSleep
-        run: |
-          cd zephyr-workspace
-          printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
-          sudo rm -rf Stacked-SmolSlime/build
-          mkdir Stacked-SmolSlime/build
+      # - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) NoSleep
+      # # Tracker Firmware Build for SuperMini (Stacked 🥪) NoSleep
+      #   run: |
+      #     cd zephyr-workspace
+      #     printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
+      #     sudo rm -rf Stacked-SmolSlime/build
+      #     mkdir Stacked-SmolSlime/build
 
-          # zero ccache statistics
-          ccache -z
-          west build \
-              --board supermini_uf2 \
-              --pristine=always Stacked-SmolSlime \
-              --build-dir Stacked-SmolSlime/build \
-              -- \
-              -DNCS_TOOLCHAIN_VERSION=NONE \
-              -DBOARD_ROOT=../Stacked-SmolSlime
+      #     # zero ccache statistics
+      #     ccache -z
+      #     west build \
+      #         --board supermini_uf2/nrf52840 \
+      #         --pristine=always Stacked-SmolSlime \
+      #         --build-dir Stacked-SmolSlime/build \
+      #         -- \
+      #         -DNCS_TOOLCHAIN_VERSION=NONE \
+      #         -DBOARD_ROOT=../Stacked-SmolSlime
 
-          mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+      #     mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
               
-          # print detailed ccache statistics
-          ccache -sv
+      #     # print detailed ccache statistics
+      #     ccache -sv
 
       - name: 💾 Upload SlimeNRF_Tracker_SuperMini.uf2
         uses: actions/upload-artifact@v4
@@ -646,21 +647,21 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/Releases/SlimeNRF_Receiver_XIAO.uf2
 
-      - name: 💾 Upload SlimeNRF_Tracker_SuperMiniStacked.uf2
-        uses: actions/upload-artifact@v4
-        with:
-          # Artifact name
-          name: SlimeNRF_Tracker_SuperMiniStacked.uf2
-          # A file, directory or wildcard pattern that describes what to upload
-          path: zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
+      # - name: 💾 Upload SlimeNRF_Tracker_SuperMiniStacked.uf2
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     # Artifact name
+      #     name: SlimeNRF_Tracker_SuperMiniStacked.uf2
+      #     # A file, directory or wildcard pattern that describes what to upload
+      #     path: zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
 
-      - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
-        uses: actions/upload-artifact@v4
-        with:
-          # Artifact name
-          name: SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
-          # A file, directory or wildcard pattern that describes what to upload
-          path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+      # - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     # Artifact name
+      #     name: SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+      #     # A file, directory or wildcard pattern that describes what to upload
+      #     path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
 
       - name: 📁 Create/Update Github Release
         uses: mini-bomba/create-github-release@v1.2.0
@@ -687,6 +688,6 @@ jobs:
             zephyr-workspace/Releases/SlimeNRF_Tracker_CLK_XIAO.uf2
             zephyr-workspace/Releases/SlimeNRF_Tracker_SlimevrMini.uf2
             zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
-            zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
-            zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+            # zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
+            # zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
           clear_attachments: false
