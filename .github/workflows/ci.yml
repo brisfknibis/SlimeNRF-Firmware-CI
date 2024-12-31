@@ -101,9 +101,9 @@ jobs:
         # only for the arm-zephyr-eabi (Cortex-M) architecture, since we don't
         # need the other toolchains (xtensa, riscv, etc.)
         run: |
-          wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.18.0-alpha2/zephyr-sdk-0.18.0-alpha2_linux-x86_64_minimal.tar.xz
-          tar xf zephyr-sdk-0.18.0-alpha2_linux-x86_64_minimal.tar.xz -C ~/
-          ~/zephyr-sdk-0.18.0-alpha2/setup.sh -c -t arm-zephyr-eabi
+          wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz
+          tar xf zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz -C ~/
+          ~/zephyr-sdk-0.17.0/setup.sh -c -t arm-zephyr-eabi
 
       - name: ♻️ Initialize Zephyr Workspace
         # Set up the Zephyr workspace and install the Python dependencies
@@ -140,7 +140,7 @@ jobs:
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -162,7 +162,7 @@ jobs:
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -184,7 +184,7 @@ jobs:
           west build \
               --board slimenrf_r3/nrf52840/uf2 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -206,7 +206,7 @@ jobs:
           west build \
               --board slimevrmini_p1_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -229,7 +229,7 @@ jobs:
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -251,7 +251,7 @@ jobs:
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -273,7 +273,7 @@ jobs:
           west build \
               --board slimenrf_r3/nrf52840/uf2 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -295,7 +295,7 @@ jobs:
           west build \
               --board slimevrmini_p1_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -320,7 +320,7 @@ jobs:
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -345,7 +345,7 @@ jobs:
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -370,7 +370,7 @@ jobs:
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -392,7 +392,7 @@ jobs:
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
-              --build-dir ../SlimeVR-Tracker-nRF/build \
+              --build-dir SlimeVR-Tracker-nRF/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
@@ -416,7 +416,7 @@ jobs:
           west build \
               --board nrf52840dongle/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
-              --build-dir ../SlimeVR-Tracker-nRF-Receiver/build \
+              --build-dir SlimeVR-Tracker-nRF-Receiver/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF-Receiver
@@ -440,7 +440,7 @@ jobs:
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
-              --build-dir ../SlimeVR-Tracker-nRF-Receiver/build \
+              --build-dir SlimeVR-Tracker-nRF-Receiver/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF-Receiver
@@ -464,7 +464,7 @@ jobs:
           west build \
               --board xiao_ble \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
-              --build-dir ../SlimeVR-Tracker-nRF-Receiver/build \
+              --build-dir SlimeVR-Tracker-nRF-Receiver/build \
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF-Receiver
