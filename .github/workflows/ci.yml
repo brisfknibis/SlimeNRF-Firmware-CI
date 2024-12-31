@@ -136,7 +136,8 @@ jobs:
           sudo rm -rf Releases
           mkdir Releases
           sudo rm -rf SlimeVR-Tracker-nRF/build
-          # sudo rm -rf SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/Kconfig.supermini_uf2
+          sudo rm -rf SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/Kconfig.supermini_uf2
+          sudo rm -rf SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2_defconfig
           mkdir SlimeVR-Tracker-nRF/build
           
           # zero ccache statistics
