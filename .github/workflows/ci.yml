@@ -133,7 +133,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf Releases
           mkdir Releases
-          sudo rm -rf SlimeVR-Tracker-nRF/Kconfig
+          sudo rm -f SlimeVR-Tracker-nRF/Kconfig
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
