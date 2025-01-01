@@ -131,6 +131,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini
       # Tracker Firmware Build for SuperMini
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf Releases
@@ -155,6 +156,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO
       # Tracker Firmware Build for XIAO
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -177,6 +179,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeNRF_R3
       # Tracker Firmware Build for SlimeNRF R3
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -199,6 +202,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini
       # Tracker Firmware Build for SlimeVR Mini
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -221,6 +225,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini NoSleep
       # Tracker Firmware Build for SuperMini NoSleep
+        if: always()
         run: |
           cd zephyr-workspace
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
@@ -244,6 +249,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO NoSleep
       # Tracker Firmware Build for XIAO NoSleep
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -266,6 +272,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeNRF_R3 NoSleep
       # Tracker Firmware Build for SlimeNRF R3 NoSleep
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -288,6 +295,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini NoSleep
       # Tracker Firmware Build for SlimeVR Mini NoSleep
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -310,6 +318,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini NoSleepCLK
       # Tracker Firmware Build for SuperMini NoSleepCLK
+        if: always()
         run: |
           cd zephyr-workspace
           find='\/\/\sclk-gpios'
@@ -335,6 +344,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO NoSleepCLK
       # Tracker Firmware Build for XIAO NoSleepCLK
+        if: always()
         run: |
           cd zephyr-workspace
           find="\/\/\sclk-gpios"
@@ -360,6 +370,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini CLK
       # Tracker Firmware Build for SuperMini CLK
+        if: always()
         run: |
           cd zephyr-workspace
           find="CONFIG_USE_IMU_WAKE_UP=n"
@@ -385,6 +396,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO CLK
       # Tracker Firmware Build for XIAO CLK
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -407,6 +419,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - Nordic_eByte_Dongle
       # Receiver Firmware Build for Nordic_eByte Dongle
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -429,6 +442,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - SuperMini
       # Receiver Firmware Build for SuperMini
+        if: always()
         run: |
           cd zephyr-workspace
           # sudo rm -rf zephyr/boards/arm/supermini_uf2
@@ -453,6 +467,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - XIAO
       # Receiver Firmware Build for XIAO
+        if: always()
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -475,6 +490,7 @@ jobs:
 
       # - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪)
       # # Tracker Firmware Build for SuperMini (Stacked 🥪)
+      #   if: always()
       #   run: |
       #     cd zephyr-workspace
       #     sudo rm -rf Stacked-SmolSlime/Kconfig
@@ -505,6 +521,7 @@ jobs:
 
       # - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) NoSleep
       # # Tracker Firmware Build for SuperMini (Stacked 🥪) NoSleep
+      #   if: always()
       #   run: |
       #     cd zephyr-workspace
       #     printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
@@ -527,6 +544,7 @@ jobs:
       #     ccache -sv
 
       - name: 💾 Upload SlimeNRF_Tracker_SuperMini.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -535,6 +553,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMini.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_XIAO.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -543,6 +562,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_XIAO.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_R3.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -551,6 +571,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_R3.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_SlimevrMini.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -559,6 +580,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_SlimevrMini.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -567,6 +589,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SuperMini.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -575,6 +598,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMini.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleep_XIAO.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -583,6 +607,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_XIAO.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleep_R3.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -591,6 +616,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_R3.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -599,6 +625,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_NoSleepCLK_XIAO.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -607,6 +634,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleepCLK_XIAO.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_CLK_SuperMini.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -615,6 +643,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_CLK_SuperMini.uf2
 
       - name: 💾 Upload SlimeNRF_Tracker_CLK_XIAO.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -623,6 +652,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Tracker_CLK_XIAO.uf2
 
       - name: 💾 Upload SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -631,6 +661,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
 
       - name: 💾 Upload SlimeNRF_Receiver_SuperMini.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -639,6 +670,7 @@ jobs:
           path: zephyr-workspace/Releases/SlimeNRF_Receiver_SuperMini.uf2
 
       - name: 💾 Upload SlimeNRF_Receiver_XIAO.uf2
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           # Artifact name
@@ -646,23 +678,26 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: zephyr-workspace/Releases/SlimeNRF_Receiver_XIAO.uf2
 
-      # - name: 💾 Upload SlimeNRF_Tracker_SuperMiniStacked.uf2
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     # Artifact name
-      #     name: SlimeNRF_Tracker_SuperMiniStacked.uf2
-      #     # A file, directory or wildcard pattern that describes what to upload
-      #     path: zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
+      - name: 💾 Upload SlimeNRF_Tracker_SuperMiniStacked.uf2
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_SuperMiniStacked.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
 
-      # - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     # Artifact name
-      #     name: SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
-      #     # A file, directory or wildcard pattern that describes what to upload
-      #     path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+      - name: 💾 Upload SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          # Artifact name
+          name: SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+          # A file, directory or wildcard pattern that describes what to upload
+          path: zephyr-workspace/Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
 
       - name: 📁 Create/Update Github Release
+        if: always()
         uses: mini-bomba/create-github-release@v1.2.0
         with:
           token: ${{ secrets.gh_token }}
