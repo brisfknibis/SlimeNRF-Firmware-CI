@@ -113,7 +113,6 @@ jobs:
           west init -l SlimeNRF-Firmware-CI
           west update --narrow -o=--depth=1
           west zephyr-export
-          west packages pip --install
 
       - name: 🐍 Install Python Dependencies
         run: |
@@ -135,8 +134,6 @@ jobs:
           sudo rm -rf Releases
           mkdir Releases
           sudo rm -rf SlimeVR-Tracker-nRF/build
-          # sudo rm -rf SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/Kconfig.supermini_uf2
-          # sudo rm -rf SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2_defconfig
           mkdir SlimeVR-Tracker-nRF/build
           
           # zero ccache statistics
