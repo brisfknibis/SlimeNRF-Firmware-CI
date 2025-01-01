@@ -48,6 +48,8 @@ jobs:
           sudo rm -rf zephyr-workspace/SlimeNRF-Firmware-CI
           sudo rm -rf zephyr-workspace/SlimeVR-Tracker-nRF
           sudo rm -rf zephyr-workspace/SlimeVR-Tracker-nRF-Receiver
+          sudo rm -rf zephyr-workspace/Releases
+          mkdir zephyr-workspace/Releases
       - uses: actions/checkout@v4
         with:
           # Clone the repo to a subdirectory, so we can initialize the Zephyr
@@ -133,8 +135,6 @@ jobs:
       # Tracker Firmware Build for SuperMini
         run: |
           cd zephyr-workspace
-          sudo rm -rf Releases
-          mkdir Releases
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
