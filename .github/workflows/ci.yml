@@ -323,7 +323,7 @@ jobs:
           cd zephyr-workspace
           find='\/\/\sclk-gpios'
           replace='clk-gpios'
-          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/arm/supermini_uf2/supermini_uf2.dts
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
@@ -349,7 +349,7 @@ jobs:
           cd zephyr-workspace
           find="\/\/\sclk-gpios"
           replace="clk-gpios"
-          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/arm/xiao_uf2/xiao_uf2.dts
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
@@ -445,8 +445,6 @@ jobs:
         if: always()
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/supermini_uf2
-          # cp -r SlimeVR-Tracker-nRF-Receiver/boards/arm/supermini_uf2 zephyr/boards/arm/
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
@@ -496,7 +494,7 @@ jobs:
       #     sudo rm -rf Stacked-SmolSlime/Kconfig
       #     find="sw0\s="
       #     replace="\/\/ sw0 ="
-      #     sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/arm/supermini_uf2/supermini_uf2.dts
+      #     sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
       #     cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
       #     cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
       #     cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
