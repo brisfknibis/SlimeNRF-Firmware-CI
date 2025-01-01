@@ -409,8 +409,6 @@ jobs:
       # Receiver Firmware Build for Nordic_eByte Dongle
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/nrf52840dongle_nrf52840/nrf52840dongle_nrf52840.conf
-          # cp SlimeVR-Tracker-nRF-Receiver/boards/nrf52840dongle_nrf52840.conf zephyr/boards/arm/nrf52840dongle_nrf52840/
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
@@ -457,8 +455,6 @@ jobs:
       # Receiver Firmware Build for XIAO
         run: |
           cd zephyr-workspace
-          # sudo rm -rf zephyr/boards/arm/xiao_ble/xiao_ble.conf
-          # cp SlimeVR-Tracker-nRF-Receiver/boards/xiao_ble.conf zephyr/boards/arm/xiao_ble/
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
