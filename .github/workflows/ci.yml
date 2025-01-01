@@ -46,6 +46,8 @@ jobs:
       - name: 🧹 Clean Landing Site
         run: |
           sudo rm -rf zephyr-workspace/SlimeNRF-Firmware-CI
+          sudo rm -rf zephyr-workspace/SlimeVR-Tracker-nRF
+          sudo rm -rf zephyr-workspace/SlimeVR-Tracker-nRF-Receiver
       - uses: actions/checkout@v4
         with:
           # Clone the repo to a subdirectory, so we can initialize the Zephyr
@@ -133,7 +135,6 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf Releases
           mkdir Releases
-          sudo rm -f SlimeVR-Tracker-nRF/Kconfig
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
           
