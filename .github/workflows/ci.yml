@@ -486,60 +486,60 @@ jobs:
           # print detailed ccache statistics
           ccache -sv
 
-      # - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪)
-      # # Tracker Firmware Build for SuperMini (Stacked 🥪)
-      #   if: always()
-      #   run: |
-      #     cd zephyr-workspace
-      #     sudo rm -rf Stacked-SmolSlime/Kconfig
-      #     find="sw0\s="
-      #     replace="\/\/ sw0 ="
-      #     sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
-      #     cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
-      #     cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
-      #     cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
-      #     cp SlimeVR-Tracker-nRF/Kconfig Stacked-SmolSlime/
-      #     sudo rm -rf Stacked-SmolSlime/build
-      #     mkdir Stacked-SmolSlime/build
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪)
+      # Tracker Firmware Build for SuperMini (Stacked 🥪)
+        if: always()
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf Stacked-SmolSlime/Kconfig
+          find="sw0\s="
+          replace="\/\/ sw0 ="
+          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
+          cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
+          cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
+          cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
+          cp SlimeVR-Tracker-nRF/Kconfig Stacked-SmolSlime/
+          sudo rm -rf Stacked-SmolSlime/build
+          mkdir Stacked-SmolSlime/build
           
-      #     # zero ccache statistics
-      #     ccache -z
-      #     west build \
-      #         --board supermini_uf2/nrf52840 \
-      #         --pristine=always Stacked-SmolSlime \
-      #         --build-dir Stacked-SmolSlime/build \
-      #         -- \
-      #         -DNCS_TOOLCHAIN_VERSION=NONE \
-      #         -DBOARD_ROOT=../Stacked-SmolSlime
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board supermini_uf2/nrf52840 \
+              --pristine=always Stacked-SmolSlime \
+              --build-dir Stacked-SmolSlime/build \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=../Stacked-SmolSlime
 
-      #     mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
+          mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
               
-      #     # print detailed ccache statistics
-      #     ccache -sv
+          # print detailed ccache statistics
+          ccache -sv
 
-      # - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) NoSleep
-      # # Tracker Firmware Build for SuperMini (Stacked 🥪) NoSleep
-      #   if: always()
-      #   run: |
-      #     cd zephyr-workspace
-      #     printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
-      #     sudo rm -rf Stacked-SmolSlime/build
-      #     mkdir Stacked-SmolSlime/build
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) NoSleep
+      # Tracker Firmware Build for SuperMini (Stacked 🥪) NoSleep
+        if: always()
+        run: |
+          cd zephyr-workspace
+          printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
+          sudo rm -rf Stacked-SmolSlime/build
+          mkdir Stacked-SmolSlime/build
 
-      #     # zero ccache statistics
-      #     ccache -z
-      #     west build \
-      #         --board supermini_uf2/nrf52840 \
-      #         --pristine=always Stacked-SmolSlime \
-      #         --build-dir Stacked-SmolSlime/build \
-      #         -- \
-      #         -DNCS_TOOLCHAIN_VERSION=NONE \
-      #         -DBOARD_ROOT=../Stacked-SmolSlime
+          # zero ccache statistics
+          ccache -z
+          west build \
+              --board supermini_uf2/nrf52840 \
+              --pristine=always Stacked-SmolSlime \
+              --build-dir Stacked-SmolSlime/build \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=../Stacked-SmolSlime
 
-      #     mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
+          mv Stacked-SmolSlime/build/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
               
-      #     # print detailed ccache statistics
-      #     ccache -sv
+          # print detailed ccache statistics
+          ccache -sv
 
       - name: 💾 Upload SlimeNRF_Tracker_SuperMini.uf2
         if: always()
