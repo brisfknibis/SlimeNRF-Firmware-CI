@@ -498,6 +498,7 @@ jobs:
           cp SlimeVR-Tracker-nRF/Kconfig Stacked-SmolSlime/
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
+          printf "\n\nCONFIG_SENSOR_GYRO_ODR=400" >> SlimeVR-Tracker-nRF/prj.conf
           
           # zero ccache statistics
           ccache -z
