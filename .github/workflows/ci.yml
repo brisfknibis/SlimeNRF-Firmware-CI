@@ -223,7 +223,7 @@ jobs:
           # print detailed ccache statistics
           ccache -sv
 
-            - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini P2
+      - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini P2
       # Tracker Firmware Build for SlimeVR Mini P2
         if: always()
         run: |
