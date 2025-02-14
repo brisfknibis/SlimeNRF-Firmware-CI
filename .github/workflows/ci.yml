@@ -778,10 +778,10 @@ jobs:
         run: |
           cd zephyr-workspace
           sudo rm -rf Stacked-SmolSlime/Kconfig
-          cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
-          cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
-          cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
-          cp SlimeVR-Tracker-nRF/Kconfig Stacked-SmolSlime/
+          sudo cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
+          sudo cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
+          sudo cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
+          sudo cp SlimeVR-Tracker-nRF/Kconfig Stacked-SmolSlime/
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
