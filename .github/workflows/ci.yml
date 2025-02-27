@@ -35,14 +35,6 @@ jobs:
           git log -1 --pretty=%B >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: 💾 Cache Zephyr Workspace
-        uses: actions/cache@v3
-        with:
-          path: zephyr-workspace
-          key: zephyr-workspace-v1-${{ runner.os }}-${{ hashFiles('zephyr-workspace/SlimeNRF-Firmware-CI/west.yml') }}
-          restore-keys: |
-            zephyr-workspace-v1-${{ runner.os }}-
-
       - name: 🧹 Clean Landing Site
         run: |
           sudo rm -rf zephyr-workspace/SlimeNRF-Firmware-CI
@@ -53,14 +45,6 @@ jobs:
           # Clone the repo to a subdirectory, so we can initialize the Zephyr
           # workspace in the parent directory.
           path: zephyr-workspace/SlimeNRF-Firmware-CI
-
-      - name: 💾 Cache ~/.venv
-        uses: actions/cache@v3
-        with:
-          path: ~/.venv
-          key: venv-${{ runner.os }}-${{ hashFiles('zephyr-workspace/zephyr/scripts/requirements.txt') }}
-          restore-keys: |
-            venv-${{ runner.os }}-
 
       - name: 🧰 Install Dependencies + West
         # Install the Zephyr host build dependencies, and the `west` Python tool. This list is from
@@ -121,14 +105,6 @@ jobs:
           cd zephyr-workspace
           pip3 install -r zephyr/scripts/requirements.txt
 
-      - name: 💾 Cache ~/.cache/ccache
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/ccache
-          key: ccache-v1-${{ runner.os }}-${{ hashFiles('zephyr-workspace/SlimeNRF-Firmware-CI/west.yml') }}
-          restore-keys: |
-            ccache-v1-${{ runner.os }}-
-
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini
       # Tracker Firmware Build for SuperMini
         if: always()
@@ -141,9 +117,7 @@ jobs:
           mkdir Releases
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -153,9 +127,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SuperMini.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO
       # Tracker Firmware Build for XIAO
@@ -164,9 +135,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -176,9 +145,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_XIAO.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini SW0
       # Tracker Firmware Build for SuperMini SW0
@@ -190,9 +156,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -206,9 +170,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO SW0
       # Tracker Firmware Build for XIAO SW0
@@ -220,9 +181,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -236,9 +195,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeNRF_R3
       # Tracker Firmware Build for SlimeNRF R3
@@ -247,9 +203,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board slimenrf_r3/nrf52840/uf2 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -259,9 +213,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_R3.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini P1
       # Tracker Firmware Build for SlimeVR Mini P1
@@ -270,9 +221,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board slimevrmini_p1_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -282,9 +231,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SlimevrMini.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini P2
       # Tracker Firmware Build for SlimeVR Mini P2
@@ -293,9 +239,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board slimevrmini_p2_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -305,9 +249,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SlimevrMini2.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini NoSleep
       # Tracker Firmware Build for SuperMini NoSleep
@@ -317,9 +258,7 @@ jobs:
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -329,9 +268,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SuperMini.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO NoSleep
       # Tracker Firmware Build for XIAO NoSleep
@@ -340,9 +276,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -352,9 +286,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_XIAO.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini SW0 NoSleep
       # Tracker Firmware Build for SuperMini SW0 NoSleep
@@ -366,9 +297,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -382,9 +311,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO SW0 NoSleep
       # Tracker Firmware Build for XIAO SW0 NoSleep
@@ -396,9 +322,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -412,9 +336,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeNRF_R3 NoSleep
       # Tracker Firmware Build for SlimeNRF R3 NoSleep
@@ -423,9 +344,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board slimenrf_r3/nrf52840/uf2 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -435,9 +354,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_R3.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini P1 NoSleep
       # Tracker Firmware Build for SlimeVR Mini P1 NoSleep
@@ -446,9 +362,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board slimevrmini_p1_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -458,9 +372,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SlimevrMini.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SlimeVR Mini P2 NoSleep
       # Tracker Firmware Build for SlimeVR Mini P2 NoSleep
@@ -469,9 +380,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board slimevrmini_p2_uf2/nrf52833 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -481,9 +390,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SlimevrMini2.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini NoSleepCLK
       # Tracker Firmware Build for SuperMini NoSleepCLK
@@ -495,9 +401,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -507,9 +411,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleepCLK_SuperMini.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO NoSleepCLK
       # Tracker Firmware Build for XIAO NoSleepCLK
@@ -521,9 +422,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -533,9 +432,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleepCLK_XIAO.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini SW0 NoSleepCLK
       # Tracker Firmware Build for SuperMini SW0 NoSleepCLK
@@ -547,9 +443,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -563,9 +457,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO SW0 NoSleepCLK
       # Tracker Firmware Build for XIAO SW0 NoSleepCLK
@@ -577,9 +468,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -593,9 +482,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini CLK
       # Tracker Firmware Build for SuperMini CLK
@@ -607,9 +493,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/prj.conf
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -619,9 +503,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_CLK_SuperMini.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO CLK
       # Tracker Firmware Build for XIAO CLK
@@ -630,9 +511,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -642,9 +521,6 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_CLK_XIAO.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini SW0 CLK
       # Tracker Firmware Build for SuperMini SW0 CLK
@@ -656,9 +532,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -672,9 +546,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - XIAO SW0 CLK
       # Tracker Firmware Build for XIAO SW0 CLK
@@ -686,9 +557,7 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF \
@@ -702,9 +571,6 @@ jobs:
           find='sw0\s='
           replace='\/\/\ sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - Nordic_eByte_Dongle
       # Receiver Firmware Build for Nordic_eByte Dongle
@@ -713,9 +579,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board nrf52840dongle/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
@@ -723,11 +587,8 @@ jobs:
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF-Receiver
-              
+
           mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.hex Releases/SlimeNRF_Receiver_Nordic_eByte_Dongle.hex
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - SuperMini
       # Receiver Firmware Build for SuperMini
@@ -736,9 +597,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
@@ -746,11 +605,8 @@ jobs:
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF-Receiver
-              
-          mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.uf2 Releases/SlimeNRF_Receiver_SuperMini.uf2
 
-          # print detailed ccache statistics
-          ccache -sv
+          mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.uf2 Releases/SlimeNRF_Receiver_SuperMini.uf2
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - XIAO
       # Receiver Firmware Build for XIAO
@@ -759,9 +615,7 @@ jobs:
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
           mkdir SlimeVR-Tracker-nRF/build
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board xiao_ble/nrf52840 \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
@@ -769,11 +623,8 @@ jobs:
               -- \
               -DNCS_TOOLCHAIN_VERSION=NONE \
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF-Receiver
-              
-          mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.uf2 Releases/SlimeNRF_Receiver_XIAO.uf2
 
-          # print detailed ccache statistics
-          ccache -sv
+          mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.uf2 Releases/SlimeNRF_Receiver_XIAO.uf2
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪)
       # Tracker Firmware Build for SuperMini (Stacked 🥪)
@@ -791,9 +642,7 @@ jobs:
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
           printf "\n\nCONFIG_SENSOR_GYRO_ODR=400" >> Stacked-SmolSlime/prj.conf
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always Stacked-SmolSlime \
@@ -803,9 +652,6 @@ jobs:
               -DBOARD_ROOT=../Stacked-SmolSlime
 
           mv Stacked-SmolSlime/build/Stacked-SmolSlime/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SuperMiniStacked.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) SW0
       # Tracker Firmware Build for SuperMini (Stacked 🥪) SW0
@@ -818,9 +664,7 @@ jobs:
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
           printf "\n\nCONFIG_SENSOR_GYRO_ODR=400" >> Stacked-SmolSlime/prj.conf
-          
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always Stacked-SmolSlime \
@@ -830,9 +674,6 @@ jobs:
               -DBOARD_ROOT=../Stacked-SmolSlime
 
           mv Stacked-SmolSlime/build/Stacked-SmolSlime/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SW0_SuperMiniStacked.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) SW0 NoSleep
       # Tracker Firmware Build for SuperMini (Stacked 🥪) SW0 NoSleep
@@ -842,8 +683,7 @@ jobs:
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
-          # zero ccache statistics
-          ccache -z
+
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always Stacked-SmolSlime \
@@ -853,9 +693,6 @@ jobs:
               -DBOARD_ROOT=../Stacked-SmolSlime
 
           mv Stacked-SmolSlime/build/Stacked-SmolSlime/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_SW0_NoSleep_SuperMiniStacked.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - SuperMini (Stacked 🥪) NoSleep
       # Tracker Firmware Build for SuperMini (Stacked 🥪) NoSleep
@@ -868,8 +705,6 @@ jobs:
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
 
-          # zero ccache statistics
-          ccache -z
           west build \
               --board supermini_uf2/nrf52840 \
               --pristine=always Stacked-SmolSlime \
@@ -879,9 +714,6 @@ jobs:
               -DBOARD_ROOT=../Stacked-SmolSlime
 
           mv Stacked-SmolSlime/build/Stacked-SmolSlime/zephyr/zephyr.uf2 Releases/SlimeNRF_Tracker_NoSleep_SuperMiniStacked.uf2
-              
-          # print detailed ccache statistics
-          ccache -sv
 
       - name: 💾 Upload SlimeNRF_Tracker_SuperMini.uf2
         if: always()
