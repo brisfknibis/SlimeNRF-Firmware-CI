@@ -641,7 +641,6 @@ jobs:
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
-          printf "\n\nCONFIG_SENSOR_GYRO_ODR=400" >> Stacked-SmolSlime/prj.conf
 
           west build \
               --board supermini_uf2/nrf52840 \
@@ -663,7 +662,6 @@ jobs:
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
-          printf "\n\nCONFIG_SENSOR_GYRO_ODR=400" >> Stacked-SmolSlime/prj.conf
 
           west build \
               --board supermini_uf2/nrf52840 \
