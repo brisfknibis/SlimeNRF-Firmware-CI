@@ -50,10 +50,10 @@ jobs:
                   {boardname: "slimevrmini_p1_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini", sleep: "disabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p2_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini2", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p2_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini2", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3_r6_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R6", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3_r6_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R6", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3_r7_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R7", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3_r7/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R7", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R6", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R6", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R7", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", device: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R7", sleep: "disabled", sw0: "disabled"}, 
                 ]
     if: always()
     runs-on: ubuntu-latest
