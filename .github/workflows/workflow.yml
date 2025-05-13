@@ -136,15 +136,15 @@ jobs:
           sed -i "s/$find/$replace/g" zephyr/drivers/retained_mem/retained_mem_nrf_ram_ctrl.c
           sudo rm -rf Releases
           mkdir Releases
-          sudo rm -rf SlimeVR-Tracker-nRF-Receiver/build
-          mkdir SlimeVR-Tracker-nRF-Receiver/build
-          sudo rm -rf SlimeVR-Tracker-nRF/build
-          mkdir SlimeVR-Tracker-nRF/build
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - ${{ matrix.boards.boardname }}
       # Receiver Firmware Build 
         if: always() && ${{ matrix.boards.device == 'receiver' }}
         run: |
+          cd zephyr-workspace
+          sudo rm -rf SlimeVR-Tracker-nRF-Receiver/build
+          mkdir SlimeVR-Tracker-nRF-Receiver/build
+
           west build \
               --board ${{ matrix.boards.boardname }} \
               --pristine=always SlimeVR-Tracker-nRF-Receiver \
@@ -158,6 +158,7 @@ jobs:
       - name: 🔧 Enabling External Clock
         if: always() && ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.clk == 'enabled' }}
         run: |
+          cd zephyr-workspace
           find="\/\/\sclk-gpios"
           replace="clk-gpios"
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
@@ -166,11 +167,13 @@ jobs:
       - name: 🔧 Disabling Sleep
         if: always() && ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sleep == 'disabled' }}
         run: |
+          cd zephyr-workspace
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
 
       - name: 🔧 Enabling SW0 Button
         if: always() && ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sw0 == 'enabled' }}
         run: |
+          cd zephyr-workspace
           find='\/\/\ssw0\s='
           replace='sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
@@ -180,6 +183,10 @@ jobs:
       # Tracker Firmware Build 
         if: always() && ${{ matrix.boards.device == 'tracker' }}
         run: |
+          cd zephyr-workspace
+          sudo rm -rf SlimeVR-Tracker-nRF/build
+          mkdir SlimeVR-Tracker-nRF/build
+
           west build \
               --board ${{ matrix.boards.boardname }} \
               --pristine=always SlimeVR-Tracker-nRF \
