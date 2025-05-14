@@ -195,7 +195,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
-        if: ${{ matrix.boards.device == 'tracker' }} && ${{ !contains(matrix.boards.filename, "Stacked") }}
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ !contains(matrix.boards.filename, 'Stacked') }}
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -210,6 +210,24 @@ jobs:
               -DBOARD_ROOT=../SlimeVR-Tracker-nRF
 
           mv SlimeVR-Tracker-nRF/build/SlimeVR-Tracker-nRF/zephyr/zephyr.${{ matrix.boards.fileformat }} Releases/${{ matrix.boards.filename }}.${{ matrix.boards.fileformat }}
+
+      - name: 🔨 Build Stacked-SmolSlime - ${{ matrix.boards.boardname }}
+      # Tracker Firmware Build 
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ contains(matrix.boards.filename, 'Stacked') }}
+        run: |
+          cd zephyr-workspace
+          sudo rm -rf Stacked-SmolSlime/build
+          mkdir Stacked-SmolSlime/build
+
+          west build \
+              --board ${{ matrix.boards.boardname }} \
+              --pristine=always Stacked-SmolSlime \
+              --build-dir Stacked-SmolSlime/build \
+              -- \
+              -DNCS_TOOLCHAIN_VERSION=NONE \
+              -DBOARD_ROOT=../Stacked-SmolSlime
+
+          mv Stacked-SmolSlime/build/Stacked-SmolSlime/zephyr/zephyr.${{ matrix.boards.fileformat }} Releases/${{ matrix.boards.filename }}.${{ matrix.boards.fileformat }}
 
       - name: 💾 Upload Artifact - ${{ matrix.boards.boardname }}
         if: always()
