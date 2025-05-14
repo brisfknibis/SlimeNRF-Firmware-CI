@@ -22,38 +22,38 @@ jobs:
     strategy:
       matrix:
         boards: [
-                  {boardname: "nrf52840dongle/nrf52840", clk: "N/A", tyoe: "receiver", fileformat: "hex", filename: "SlimeNRF_Nordic_eByte_Dongle_Receiver", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "holyiot_21017/nrf52840", clk: "N/A", tyoe: "receiver", fileformat: "hex", filename: "SlimeNRF_Holyiot_Dongle_Receiver", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "N/A", tyoe: "receiver", fileformat: "uf2", filename: "SlimeNRF_SuperMini_Receiver", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "N/A", tyoe: "receiver", fileformat: "uf2", filename: "SlimeNRF_XIAO_Receiver", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "etee_dongle_uf2/nrf52840", clk: "N/A", tyoe: "receiver", fileformat: "uf2", filename: "SlimeNRF_etee_Receiver", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "nrf52840dk/nrf52840", clk: "N/A", tyoe: "receiver", fileformat: "hex", filename: "SlimeNRF_nRF52840dk_Receiver", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SuperMini", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_CLK_SuperMini", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SuperMini", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_SuperMini", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleepCLK_SuperMini", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_CLK_SuperMini", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleep_SuperMini", sleep: "disabled", sw0: "enabled"}, 
-                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleepCLK_SuperMini", sleep: "disabled", sw0: "enabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_XIAO", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_CLK_XIAO", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_XIAO", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_XIAO", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleepCLK_XIAO", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_CLK_XIAO", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "disabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleep_XIAO", sleep: "disabled", sw0: "enabled"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleepCLK_XIAO", sleep: "disabled", sw0: "enabled"}, 
-                  {boardname: "slimenrf_r3/nrf52840/uf2", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_R3", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "slimenrf_r3/nrf52840/uf2", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_R3", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p1_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p1_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p2_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini2", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p2_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini2", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R6", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R6", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R7", sleep: "enabled", sw0: "disabled"}, 
-                  {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", tyoe: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R7", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "nrf52840dongle/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_Nordic_eByte_Dongle_Receiver", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "holyiot_21017/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_Holyiot_Dongle_Receiver", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_SuperMini_Receiver", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_XIAO_Receiver", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "etee_dongle_uf2/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_etee_Receiver", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "nrf52840dk/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_nRF52840dk_Receiver", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SuperMini", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_CLK_SuperMini", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SuperMini", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_SuperMini", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleepCLK_SuperMini", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_CLK_SuperMini", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleep_SuperMini", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "supermini_uf2/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleepCLK_SuperMini", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_XIAO", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_CLK_XIAO", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_XIAO", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_XIAO", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleepCLK_XIAO", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_CLK_XIAO", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleep_XIAO", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleepCLK_XIAO", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "slimenrf_r3/nrf52840/uf2", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_R3", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "slimenrf_r3/nrf52840/uf2", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_R3", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p1_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p1_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p2_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini2", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p2_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini2", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R6", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R6", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R7", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R7", sleep: "disabled", sw0: "disabled"}, 
                 ]
     if: always()
     runs-on: ubuntu-latest
@@ -90,7 +90,7 @@ jobs:
           gperf \
           ccache \
           dfu-util \
-          tyoe-tree-compiler \
+          device-tree-compiler \
           wget \
           python3-dev \
           python3-pip \
@@ -150,7 +150,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - ${{ matrix.boards.boardname }}
       # Receiver Firmware Build 
-        if: ${{ matrix.boards.tyoe == 'receiver' }}
+        if: ${{ matrix.boards.type == 'receiver' }}
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF-Receiver/build
@@ -195,7 +195,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
-        if: ${{ matrix.boards.tyoe == 'tracker' }}
+        if: ${{ matrix.boards.type == 'tracker' }}
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
