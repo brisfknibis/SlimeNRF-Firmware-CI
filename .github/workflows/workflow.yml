@@ -150,7 +150,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF-Receiver - ${{ matrix.boards.boardname }}
       # Receiver Firmware Build 
-        if: (${{ matrix.boards.device == 'receiver' }})
+        if: ${{ matrix.boards.device == 'receiver' }}
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF-Receiver/build
@@ -167,7 +167,7 @@ jobs:
           mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.${{ matrix.boards.fileformat }} Releases/${{ matrix.boards.filename }}.${{ matrix.boards.fileformat }}
 
       - name: 🔧 Enabling External Clock
-        if: (${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.clk == 'enabled' }})
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.clk == 'enabled' }}
         run: |
           cd zephyr-workspace
           find="\/\/\sclk-gpios"
@@ -177,14 +177,14 @@ jobs:
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
 
       - name: 🔧 Disabling Sleep
-        if: (${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sleep == 'disabled' }})
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sleep == 'disabled' }}
         run: |
           cd zephyr-workspace
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
 
       - name: 🔧 Enabling SW0 Button
-        if: (${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sw0 == 'enabled' }})
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sw0 == 'enabled' }}
         run: |
           cd zephyr-workspace
           find='\/\/\ssw0\s='
@@ -195,7 +195,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
-        if: (${{ matrix.boards.device == 'tracker' }} && ${{ !contains(matrix.boards.filename, 'Stacked') }})
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ !contains(matrix.boards.filename, 'Stacked') }}
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -213,7 +213,7 @@ jobs:
 
       - name: 🔨 Build Stacked-SmolSlime 🥪 - ${{ matrix.boards.boardname }}
       # Stacked Tracker Firmware Build 
-        if: (${{ matrix.boards.device == 'tracker' }} && ${{ contains(matrix.boards.filename, 'Stacked') }})
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ contains(matrix.boards.filename, 'Stacked') }}
         run: |
           cd zephyr-workspace
           sudo rm -rf Stacked-SmolSlime/build
