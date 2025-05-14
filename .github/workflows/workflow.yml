@@ -174,12 +174,14 @@ jobs:
           replace="clk-gpios"
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
+          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
 
       - name: 🔧 Disabling Sleep
         if: ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sleep == 'disabled' }}
         run: |
           cd zephyr-workspace
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
 
       - name: 🔧 Enabling SW0 Button
         if: ${{ matrix.boards.device == 'tracker' }} && ${{ matrix.boards.sw0 == 'enabled' }}
@@ -189,10 +191,11 @@ jobs:
           replace='sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
+          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
-        if: ${{ matrix.boards.device == 'tracker' }}
+        if: ${{ matrix.boards.device == 'tracker' }} && ${{ !contains(matrix.boards.filename, "Stacked") }}
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
