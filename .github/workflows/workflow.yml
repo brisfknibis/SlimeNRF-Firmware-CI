@@ -229,6 +229,9 @@ jobs:
         if: ${{ matrix.boards.type == 'stacked' }}
         run: |
           cd zephyr-workspace
+          sudo cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
+          sudo cp -r SlimeVR-Tracker-nRF/Fusion Stacked-SmolSlime/
+          sudo cp -r SlimeVR-Tracker-nRF/NXP-ISSDK-SensorFusion Stacked-SmolSlime/
           sudo rm -rf Stacked-SmolSlime/build
           mkdir Stacked-SmolSlime/build
 
