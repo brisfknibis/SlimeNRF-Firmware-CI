@@ -63,6 +63,10 @@ jobs:
                   {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R6", sleep: "disabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R7", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R7", sleep: "disabled", sw0: "disabled"}, 
+                  {boardname: "supermini_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_I2C_StackedSmol", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "supermini_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_I2C_StackedSmol", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "supermini_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_SPI_StackedSmol", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "supermini_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SPI_StackedSmol", sleep: "disabled", sw0: "enabled"}, 
                 ]
     if: always()
     runs-on: ubuntu-latest
