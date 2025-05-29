@@ -226,7 +226,7 @@ jobs:
 
       - name: 🔨 Build Stacked-SmolSlime - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
-        if: ${{ matrix.boards.device == 'stacked' }}
+        if: ${{ matrix.boards.type == 'stacked' }}
         run: |
           cd zephyr-workspace
           sudo rm -rf Stacked-SmolSlime/build
