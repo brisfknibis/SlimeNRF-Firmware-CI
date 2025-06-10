@@ -193,10 +193,10 @@ jobs:
         if: ${{ matrix.boards.sleep == 'disabled' }}
         run: |
           cd zephyr-workspace
-          printf "\n\nCONFIG USE_ACTIVE_TIMEOUT=n" >> SlimeVR-Tracker-nRF/prj.conf
-          printf "\n\nCONFIG USE_ACTIVE_TIMEOUT=n" >> Stacked-SmolSlime/prj.conf
-          printf "\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
-          printf "\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
+          printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
+          printf "\nCONFIG USE_ACTIVE_TIMEOUT=n" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\nCONFIG USE_ACTIVE_TIMEOUT=n" >> Stacked-SmolSlime/prj.conf
 
       - name: 🔧 Enabling SW0 Button
         if: ${{ matrix.boards.sw0 == 'enabled' }}
