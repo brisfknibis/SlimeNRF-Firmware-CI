@@ -21,6 +21,7 @@ jobs:
   build:
     continue-on-error: true
     strategy:
+      fail-fast: false
       matrix:
         boards: [
                   {boardname: "nrf52840dongle/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_Nordic_eByte_Dongle_Receiver", sleep: "N/A", sw0: "N/A"}, 
