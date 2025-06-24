@@ -182,7 +182,6 @@ jobs:
           mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.${{ matrix.boards.fileformat }} Releases/${{ matrix.boards.filename }}.${{ matrix.boards.fileformat }}
 
       - name: 🔧 Enabling External Clock
-        if: ${{ matrix.boards.clk == 'enabled' }}
         run: |
           cd zephyr-workspace
           find="\/\/\sclk-gpios"
