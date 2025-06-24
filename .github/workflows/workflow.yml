@@ -191,6 +191,13 @@ jobs:
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
 
+      - name: 🔧 Disabling External Clock
+        if: ${{ matrix.boards.clk == 'disabled' }}
+        run: |
+          cd zephyr-workspace
+          printf "\n\nUSE_SENSOR_CLOCK=n" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\n\nUSE_SENSOR_CLOCK=n" >> Stacked-SmolSlime/prj.conf
+
       - name: 🔧 Disabling Sleep
         if: ${{ matrix.boards.sleep == 'disabled' }}
         run: |
