@@ -187,7 +187,7 @@ jobs:
           cd zephyr-workspace
           find="\/\/\sclk-gpios"
           replace="clk-gpios"
-          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/promicro_uf2/promicro_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
 
@@ -218,7 +218,7 @@ jobs:
           cd zephyr-workspace
           find='\/\/\ssw0\s='
           replace='sw0 ='
-          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/supermini_uf2/supermini_uf2.dts
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/promicro_uf2/promicro_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
 
