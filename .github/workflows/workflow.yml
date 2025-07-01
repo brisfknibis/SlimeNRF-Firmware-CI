@@ -65,10 +65,10 @@ jobs:
                   {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R6", magnetometer: "enabled", sleep: "disabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R7", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R7", magnetometer: "enabled", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "supermini_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_I2C_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "supermini_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_I2C_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
-                  {boardname: "supermini_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_SPI_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "supermini_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SPI_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_I2C_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_I2C_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_SPI_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SPI_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
                 ]
     if: always()
     runs-on: ubuntu-latest
@@ -189,7 +189,7 @@ jobs:
           replace="clk-gpios"
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/promicro_uf2/promicro_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
+          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/promicro_uf2/promicro_uf2.dts
 
       - name: 🔧 Disabling Magnetometer
         if: ${{ matrix.boards.magnetometer == 'disabled' }}
@@ -220,7 +220,7 @@ jobs:
           replace='sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/promicro_uf2/promicro_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/supermini_uf2/supermini_uf2.dts
+          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/promicro_uf2/promicro_uf2.dts
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
