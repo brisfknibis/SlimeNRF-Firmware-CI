@@ -24,12 +24,12 @@ jobs:
       fail-fast: false
       matrix:
         boards: [
-                  {boardname: "nrf52840dongle/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_Nordic_eByte_Dongle_Receiver", magnetometer: "enabled", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "holyiot_21017/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_Holyiot_Dongle_Receiver", magnetometer: "enabled", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "promicro_uf2/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_ProMicro_Receiver", magnetometer: "enabled", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "xiao_ble/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_XIAO_Receiver", magnetometer: "enabled", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "etee_dongle_uf2/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_etee_Receiver", magnetometer: "enabled", sleep: "N/A", sw0: "N/A"}, 
-                  {boardname: "nrf52840dk/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_nRF52840dk_Receiver", magnetometer: "enabled", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "nrf52840dongle/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_Nordic_eByte_Dongle_Receiver", magnetometer: "N/A", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "holyiot_21017/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_Holyiot_Dongle_Receiver", magnetometer: "N/A", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "promicro_uf2/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_ProMicro_Receiver", magnetometer: "N/A", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "xiao_ble/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_XIAO_Receiver", magnetometer: "N/A", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "etee_dongle_uf2/nrf52840", clk: "N/A", type: "receiver", fileformat: "uf2", filename: "SlimeNRF_etee_Receiver", magnetometer: "N/A", sleep: "N/A", sw0: "N/A"}, 
+                  {boardname: "nrf52840dk/nrf52840", clk: "N/A", type: "receiver", fileformat: "hex", filename: "SlimeNRF_nRF52840dk_Receiver", magnetometer: "N/A", sleep: "N/A", sw0: "N/A"}, 
                   {boardname: "promicro_uf2/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_ProMicro", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "promicro_uf2/nrf52840/i2c", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_I2C_ProMicro", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "promicro_uf2/nrf52840/spi", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SPI_ProMicro", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
