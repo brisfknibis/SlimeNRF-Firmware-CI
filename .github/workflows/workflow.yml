@@ -65,10 +65,10 @@ jobs:
                   {boardname: "slimevrmini_p3r6_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R6", magnetometer: "enabled", sleep: "disabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SlimevrMini3_R7", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "slimevrmini_p3r7_uf2/nrf52833", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SlimevrMini3_R7", magnetometer: "enabled", sleep: "disabled", sw0: "disabled"}, 
-                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_I2C_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_I2C_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
-                  {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_SPI_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "stacked", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SPI_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_I2C_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_I2C_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SPI_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SPI_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
                 ]
     if: always()
     runs-on: ubuntu-latest
@@ -213,17 +213,16 @@ jobs:
           printf "\n\nCONFIG_USE_ACTIVE_TIMEOUT=n" >> Stacked-SmolSlime/prj.conf
 
       - name: 🔧 Enabling SW0 Button
-        if: ${{ matrix.boards.sw0 == 'enabled' }}
+        if: ${{ (matrix.boards.sw0 == 'enabled') && (!contains(matrix.boards.filename, 'Stacked')) }}
         run: |
           cd zephyr-workspace
           find='\/\/\ssw0\s='
           replace='sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/promicro_uf2/promicro_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-          sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/promicro_uf2/promicro_uf2.dts
 
       - name: 🔧 Disabling SW0 Button
-        if: ${{ matrix.boards.sw0 == 'disabled' }}
+        if: ${{ (matrix.boards.sw0 == 'disabled') && (contains(matrix.boards.filename, 'Stacked')) }}
         run: |
           cd zephyr-workspace
           find='sw0[ \t]='
@@ -232,7 +231,7 @@ jobs:
 
       - name: 🔨 Build SlimeVR-Tracker-nRF - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
-        if: ${{ matrix.boards.type == 'tracker' }}
+        if: ${{ (matrix.boards.type == 'tracker') && (!contains(matrix.boards.filename, 'Stacked')) }}
         run: |
           cd zephyr-workspace
           sudo rm -rf SlimeVR-Tracker-nRF/build
@@ -250,7 +249,7 @@ jobs:
 
       - name: 🔨 Build Stacked-SmolSlime - ${{ matrix.boards.boardname }}
       # Tracker Firmware Build 
-        if: ${{ matrix.boards.type == 'stacked' }}
+        if: ${{ (matrix.boards.type == 'tracker') && (contains(matrix.boards.filename, 'Stacked')) }}
         run: |
           cd zephyr-workspace
           sudo cp -r SlimeVR-Tracker-nRF/vqf-c Stacked-SmolSlime/
