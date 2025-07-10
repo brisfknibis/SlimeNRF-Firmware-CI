@@ -226,7 +226,7 @@ jobs:
         if: ${{ matrix.boards.sw0 == 'disabled' }}
         run: |
           cd zephyr-workspace
-          find='sw0\s='
+          find='sw0[ \t]='
           replace='// sw0 ='
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/promicro_uf2/promicro_uf2.dts
 
