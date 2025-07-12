@@ -226,7 +226,7 @@ jobs:
           replace='sw0 ='
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/nordic/promicro_uf2/promicro_uf2.dts
           sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble.overlay
-          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble_sense.overlay
+          sed -i "s/$find/$replace/g" SlimeVR-Tracker-nRF/boards/xiao_ble_nrf52840_sense.overlay
 
       - name: 🔧 Disabling SW0 Button
         if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.sw0 == 'disabled') && (contains(matrix.boards.filename, 'Stacked')) }}
