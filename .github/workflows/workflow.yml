@@ -202,6 +202,12 @@ jobs:
           printf "\n\nCONFIG_SENSOR_USE_MAG=n" >> SlimeVR-Tracker-nRF/prj.conf
           printf "\n\nCONFIG_SENSOR_USE_MAG=n" >> Stacked-SmolSlime/prj.conf
 
+      - name: 🔧 Enabling Magnetometer
+        if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.magnetometer == 'enabled') && (contains(matrix.boards.filename, 'Stacked')) }}
+        run: |
+          cd zephyr-workspace
+          printf "\n\nCONFIG_SENSOR_USE_MAG=y" >> Stacked-SmolSlime/prj.conf
+
       - name: 🔧 Disabling External Clock
         if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.clk == 'disabled') }}
         run: |
