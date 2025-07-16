@@ -78,7 +78,7 @@ jobs:
                   {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SPI_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
                   {boardname: "promicro_uf2/nrf52840/spi", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_SPI_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
                   {boardname: "promicro_uf2/nrf52840/i2c", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoCLK_I2C_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
-                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "edisabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoCLK_NoSleep_I2C_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/i2c", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoCLK_NoSleep_I2C_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
                   {boardname: "promicro_uf2/nrf52840/spi", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoCLK_SPI_StackedSmol", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
                   {boardname: "promicro_uf2/nrf52840/spi", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoCLK_NoSleep_SPI_StackedSmol", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
                 ]
