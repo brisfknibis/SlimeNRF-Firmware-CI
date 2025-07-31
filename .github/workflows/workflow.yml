@@ -236,11 +236,11 @@ jobs:
           cd zephyr-workspace
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> SlimeVR-Tracker-nRF/prj.conf
           printf "\n\nCONFIG_USE_ACTIVE_TIMEOUT=n" >> SlimeVR-Tracker-nRF/prj.conf
-          printf "\n\nCONFIG_SENSOR_LP_TIMEOUT=900000" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\n\nCONFIG_SENSOR_LP_TIMEOUT=300000" >> SlimeVR-Tracker-nRF/prj.conf
           printf "\n\nCONFIG_SENSOR_USE_LOW_POWER_2=n" >> SlimeVR-Tracker-nRF/prj.conf
           printf "\n\nCONFIG_USE_IMU_WAKE_UP=n" >> Stacked-SmolSlime/prj.conf
           printf "\n\nCONFIG_USE_ACTIVE_TIMEOUT=n" >> Stacked-SmolSlime/prj.conf
-          printf "\n\nCONFIG_SENSOR_LP_TIMEOUT=900000" >> Stacked-SmolSlime/prj.conf
+          printf "\n\nCONFIG_SENSOR_LP_TIMEOUT=300000" >> Stacked-SmolSlime/prj.conf
           printf "\n\nCONFIG_SENSOR_USE_LOW_POWER_2=n" >> Stacked-SmolSlime/prj.conf
 
       - name: 🔧 Enabling Sleep
