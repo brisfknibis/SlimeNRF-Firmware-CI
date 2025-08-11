@@ -51,6 +51,8 @@ jobs:
                   {boardname: "promicro_uf2/nrf52840/smspi", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_smSPI_ProMicro", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
                   {boardname: "promicro_uf2/nrf52840/smspi", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_SW0_NoSleep_smSPI_ProMicro", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
                   {boardname: "promicro_uf2/nrf52840/smspi", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_smSPI_ProMicro", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/chrysalis", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_Chrysalis_ProMicro", magnetometer: "enabled", sleep: "enabled", sw0: "enabled"}, 
+                  {boardname: "promicro_uf2/nrf52840/chrysalis", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_Chrysalis_ProMicro", magnetometer: "enabled", sleep: "disabled", sw0: "enabled"}, 
                   {boardname: "xiao_ble/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_XIAO", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "xiao_ble/nrf52840", clk: "enabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_CLK_XIAO", magnetometer: "enabled", sleep: "enabled", sw0: "disabled"}, 
                   {boardname: "xiao_ble/nrf52840", clk: "disabled", type: "tracker", fileformat: "uf2", filename: "SlimeNRF_Tracker_NoSleep_XIAO", magnetometer: "enabled", sleep: "disabled", sw0: "disabled"}, 
