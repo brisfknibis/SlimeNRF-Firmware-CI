@@ -195,20 +195,6 @@ jobs:
 
           mv SlimeVR-Tracker-nRF-Receiver/build/SlimeVR-Tracker-nRF-Receiver/zephyr/zephyr.${{ matrix.boards.fileformat }} Releases/${{ matrix.boards.filename }}.${{ matrix.boards.fileformat }}
 
-      - name: 🔧 Disabling Extra Action
-        if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.extraaction == 'disabled') }}
-        run: |
-          cd zephyr-workspace
-          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=n" >> SlimeVR-Tracker-nRF/prj.conf
-          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=n" >> Stacked-SmolSlime/prj.conf
-
-      - name: 🔧 Enabling Extra Action
-        if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.extraaction == 'enabled') }}
-        run: |
-          cd zephyr-workspace
-          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=y" >> SlimeVR-Tracker-nRF/prj.conf
-          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=y" >> Stacked-SmolSlime/prj.conf
-
       - name: 🔧 Disabling External Clock
         if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.clk == 'disabled') }}
         run: |
@@ -233,6 +219,20 @@ jobs:
           sed -i "s/$find/$replace/g" Stacked-SmolSlime/boards/nordic/promicro_uf2/promicro_uf2.dts
           printf "\n\nCONFIG_USE_SENSOR_CLOCK=y" >> SlimeVR-Tracker-nRF/prj.conf
           printf "\n\nCONFIG_USE_SENSOR_CLOCK=y" >> Stacked-SmolSlime/prj.conf
+
+      - name: 🔧 Disabling Extra Action
+        if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.extraaction == 'disabled') }}
+        run: |
+          cd zephyr-workspace
+          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=n" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=n" >> Stacked-SmolSlime/prj.conf
+
+      - name: 🔧 Enabling Extra Action
+        if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.extraaction == 'enabled') }}
+        run: |
+          cd zephyr-workspace
+          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=y" >> SlimeVR-Tracker-nRF/prj.conf
+          printf "\n\nCONFIG_USER_EXTRA_ACTIONS=y" >> Stacked-SmolSlime/prj.conf
 
       - name: 🔧 Disabling Magnetometer
         if: ${{ (matrix.boards.type == 'tracker') && (matrix.boards.magnetometer == 'disabled') }}
